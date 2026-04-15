@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopify Partner Referral — Merchant Support Form</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',-apple-system,sans-serif;background:#f3f4f6;min-height:100vh;color:#1a1a2e;}
+.sf-header{background:#fff;border-bottom:1px solid #e3e3e8;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.sf-logo-wrap{display:flex;align-items:center;gap:10px;}
+.sf-shopify-logo{display:flex;align-items:center;gap:8px;}
+.sf-shopify-logo img{height:32px;width:auto;}
+.sf-logo-divider{width:1px;height:20px;background:#e3e3e8;margin:0 4px;}
+.sf-logo-text{font-size:17px;font-weight:600;color:#1a1a2e;letter-spacing:-0.3px;}
+.sf-logo-text span{color:#008060;}
+.sf-header-badge{font-size:11px;font-weight:500;background:#e8f5e0;color:#2d6a0a;border:1px solid #c3e6a0;padding:4px 12px;border-radius:20px;}
+.sf-body{max-width:680px;margin:0 auto;padding:28px 16px 60px;}
+.sf-hero{background:linear-gradient(135deg,#008060 0%,#00a376 60%,#00c48c 100%);border-radius:14px;padding:28px;margin-bottom:24px;color:#fff;position:relative;overflow:hidden;}
+.sf-hero::before{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;background:rgba(255,255,255,0.07);border-radius:50%;}
+.sf-hero::after{content:'';position:absolute;right:50px;bottom:-60px;width:140px;height:140px;background:rgba(255,255,255,0.05);border-radius:50%;}
+.sf-hero-top{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.sf-hero-title-block{}
+.sf-hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:3px 11px;font-size:11px;font-weight:500;margin-bottom:5px;}
+.sf-hero h1{font-size:21px;font-weight:600;letter-spacing:-0.4px;line-height:1.3;}
+.sf-hero p{font-size:13.5px;opacity:0.88;line-height:1.6;max-width:460px;margin-top:6px;}
+.sf-steps{display:flex;gap:8px;margin-bottom:22px;}
+.sf-step{flex:1;background:#fff;border:1px solid #e3e3e8;border-radius:10px;padding:12px;text-align:center;}
+.sf-step-num{width:26px;height:26px;background:#008060;border-radius:50%;color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;}
+.sf-step p{font-size:11px;color:#6d6d7a;line-height:1.4;}
+.sf-card{background:#fff;border:1px solid #e3e3e8;border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.sf-card-header{padding:14px 20px;border-bottom:1px solid #f0f0f3;display:flex;align-items:center;gap:10px;}
+.sf-card-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sf-card-icon.green{background:#e8f5e0;}
+.sf-card-icon.blue{background:#e0f0ff;}
+.sf-card-icon.amber{background:#fff5e0;}
+.sf-card-icon.purple{background:#f0eaff;}
+.sf-card-title{font-size:14px;font-weight:600;color:#1a1a2e;}
+.sf-card-subtitle{font-size:12px;color:#6d6d7a;margin-top:1px;}
+.sf-card-body{padding:20px;}
+.sf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.sf-row.full{grid-template-columns:1fr;}
+.sf-field{display:flex;flex-direction:column;gap:5px;}
+.sf-label{font-size:13px;font-weight:500;color:#1a1a2e;}
+.sf-req{color:#d94f3d;margin-left:2px;}
+.sf-hint{font-size:11px;color:#6d6d7a;margin-top:-2px;}
+.sf-input,.sf-select,.sf-textarea{width:100%;border:1px solid #c9c9d3;border-radius:8px;font-size:14px;color:#1a1a2e;background:#fff;outline:none;font-family:inherit;transition:border-color .15s,box-shadow .15s;}
+.sf-input,.sf-select{height:36px;padding:0 12px;}
+.sf-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236d6d7a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;}
+.sf-textarea{padding:10px 12px;resize:vertical;min-height:90px;line-height:1.5;}
+.sf-input:focus,.sf-select:focus,.sf-textarea:focus{border-color:#008060;box-shadow:0 0 0 3px rgba(0,128,96,0.12);}
+.sf-input::placeholder,.sf-textarea::placeholder{color:#b0b0ba;}
+
+/* Phone row with flag + dialcode */
+.sf-phone-row{display:flex;position:relative;}
+.sf-phone-flag-btn{height:36px;min-width:80px;border:1px solid #c9c9d3;border-right:none;border-radius:8px 0 0 8px;padding:0 8px;font-size:13px;color:#1a1a2e;background:#f6f6f7;display:flex;align-items:center;gap:5px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s;}
+.sf-phone-flag-btn:hover{background:#efefef;}
+.sf-phone-flag-btn .flag{font-size:16px;}
+.sf-phone-flag-btn .dial{font-size:12px;color:#444;}
+.sf-phone-flag-btn .caret{font-size:9px;color:#888;margin-left:2px;}
+.sf-phone-input{height:36px;border:1px solid #c9c9d3;border-radius:0 8px 8px 0;padding:0 12px;font-size:14px;color:#1a1a2e;background:#fff;flex:1;outline:none;font-family:inherit;transition:border-color .15s;}
+.sf-phone-input:focus{border-color:#008060;box-shadow:0 0 0 3px rgba(0,128,96,0.12);}
+
+/* Country dropdown */
+.sf-country-dropdown{display:none;position:absolute;top:40px;left:0;z-index:200;background:#fff;border:1px solid #c9c9d3;border-radius:10px;width:290px;box-shadow:0 8px 24px rgba(0,0,0,0.12);overflow:hidden;}
+.sf-country-dropdown.open{display:block;}
+.sf-country-search{width:100%;border:none;border-bottom:1px solid #eee;padding:10px 12px;font-size:13px;font-family:inherit;outline:none;color:#1a1a2e;}
+.sf-country-list{max-height:220px;overflow-y:auto;}
+.sf-country-item{display:flex;align-items:center;gap:10px;padding:9px 12px;font-size:13px;cursor:pointer;transition:background .12s;}
+.sf-country-item:hover{background:#f0faf7;}
+.sf-country-item .ci-flag{font-size:18px;width:24px;text-align:center;}
+.sf-country-item .ci-name{flex:1;color:#1a1a2e;}
+.sf-country-item .ci-dial{color:#888;font-size:12px;}
+
+.sf-divider{height:1px;background:#f0f0f3;margin:14px 0;}
+.sf-priority-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sf-priority-btn{border:1.5px solid #e3e3e8;border-radius:8px;padding:10px 8px;text-align:center;cursor:pointer;background:#fff;transition:all .15s;font-family:inherit;width:100%;}
+.sf-priority-btn:hover{border-color:#008060;background:#f0faf7;}
+.sf-priority-btn.selected{border-color:#008060;background:#e8f5f0;}
+.sf-priority-label{font-size:13px;font-weight:500;color:#1a1a2e;display:block;}
+.sf-priority-desc{font-size:11px;color:#6d6d7a;display:block;margin-top:2px;}
+.sf-priority-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle;}
+.sf-file-box{border:1.5px dashed #c9c9d3;border-radius:8px;padding:20px;text-align:center;cursor:pointer;background:#fafafa;transition:border-color .15s,background .15s;}
+.sf-file-box:hover{border-color:#008060;background:#f0faf7;}
+.sf-file-box p{font-size:13px;color:#6d6d7a;}
+.sf-file-box span{color:#008060;font-weight:500;}
+.sf-notice{background:#fff8e6;border:1px solid #f0d080;border-radius:8px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;margin-bottom:16px;}
+.sf-notice p{font-size:12px;color:#7a5c00;line-height:1.5;}
+.sf-submit-row{display:flex;gap:10px;align-items:center;}
+.sf-btn-primary{background:#008060;color:#fff;border:none;border-radius:8px;padding:0 24px;height:42px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;transition:background .15s;flex:1;justify-content:center;}
+.sf-btn-primary:hover{background:#006e52;}
+.sf-btn-primary:active{background:#005c44;transform:scale(0.99);}
+.sf-btn-primary:disabled{background:#7cbdaa;cursor:not-allowed;}
+.sf-btn-secondary{background:#fff;color:#1a1a2e;border:1px solid #c9c9d3;border-radius:8px;padding:0 20px;height:42px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;transition:background .15s;}
+.sf-btn-secondary:hover{background:#f6f6f7;}
+.sf-footer{text-align:center;font-size:11px;color:#9d9daa;padding:20px;border-top:1px solid #e3e3e8;background:#fff;margin-top:12px;}
+.sf-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:999;align-items:center;justify-content:center;}
+.sf-overlay.show{display:flex;}
+.sf-modal{background:#fff;border-radius:16px;padding:40px 32px;max-width:380px;width:90%;text-align:center;}
+.sf-modal-icon{width:64px;height:64px;background:#e8f5e0;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+.sf-modal h2{font-size:20px;font-weight:600;color:#1a1a2e;margin-bottom:8px;}
+.sf-modal p{font-size:14px;color:#6d6d7a;line-height:1.6;margin-bottom:20px;}
+.sf-ticket-pill{display:inline-flex;align-items:center;gap:6px;background:#f0f0f3;border-radius:6px;padding:5px 12px;font-size:12px;color:#6d6d7a;font-weight:500;margin-bottom:20px;}
+.error-field{border-color:#d94f3d!important;box-shadow:0 0 0 3px rgba(217,79,61,0.12)!important;}
+
+/* Shopify SVG logo styles */
+.sf-shopify-svg{height:30px;width:auto;}
+
+@media(max-width:500px){
+  .sf-row{grid-template-columns:1fr;}
+  .sf-steps{flex-direction:column;}
+  .sf-priority-grid{grid-template-columns:1fr;}
+  .sf-hero-top{flex-direction:column;align-items:flex-start;gap:10px;}
+  .sf-header-badge{display:none;}
+}
+</style>
+</head>
+<body>
+
+<header class="sf-header">
+  <div class="sf-logo-wrap">
+    <!-- Shopify Logo SVG -->
+    <svg class="sf-shopify-svg" viewBox="0 0 109 124" xmlns="http://www.w3.org/2000/svg">
+      <path d="M95.3 23.8c-.1-.7-.7-1.1-1.2-1.1s-10-.2-10-.2-6.7-6.5-7.4-7.2c-.7-.7-2-.5-2.5-.3 0 0-1.3.4-3.4 1c-.4-1.2-.9-2.6-1.7-4.1C67 8.1 63.5 6 59.4 6c-.3 0-.6 0-.9.1-.1-.2-.3-.3-.4-.5-1.7-1.8-3.9-2.7-6.4-2.6-5 .1-9.9 3.7-13.9 10.1-2.8 4.4-4.9 10-5.5 14.3-5.6 1.7-9.5 2.9-9.6 3-2.8.9-2.9.9-3.2 3.6C19.2 36.5 9 118 9 118l74.5 12.9 23.3-5.8S95.4 24.5 95.3 23.8zM68.3 17.5c-1.6.5-3.4 1.1-5.4 1.6-.1-2.8-.5-6.7-1.8-9.9 4.4.8 6.5 5.7 7.2 8.3zm-9.5 2.9c-3.6 1.1-7.6 2.3-11.6 3.6.9-3.5 2.7-7 5-9.4 1.1-1.1 2.6-2.3 4.4-3 1.7 3.4 2.2 8.1 2.2 8.8zm-8.7-13c1.4-.1 2.6.3 3.6 1-1.6.9-3.3 2.2-4.8 3.8-3.9 4.2-6.9 10.7-7.7 17-3.4 1-6.7 2.1-9.7 3C33.8 24.4 41.8 7.7 50.1 7.4z" fill="#95BF47"/>
+      <path d="M94.1 22.7c-.5 0-10-.2-10-.2s-6.7-6.5-7.4-7.2c-.3-.3-.6-.4-.9-.4l-4.8 131L118.3 131l-23.1-107.2c-.2-.6-.7-1.1-1.1-1.1z" fill="#5E8E3E"/>
+      <path d="M59.4 40.1l-3.4 10.2s-3.7-2-8.2-1.7c-6.5.4-6.6 4.5-6.5 5.5.4 6 16.2 7.3 17.1 21.3.7 11-5.8 18.6-15.3 19.2-11.2.7-17.3-5.9-17.3-5.9l2.4-10.1s6.1 4.6 11 4.3c3.2-.2 4.4-2.8 4.3-4.7-.5-7.8-13.4-7.4-14.2-20.2-.7-10.8 6.4-21.8 22.1-22.8 6.1-.3 9.4 1.2 9.4 1.2z" fill="#FFF"/>
+    </svg>
+    <div class="sf-logo-divider"></div>
+    <span class="sf-logo-text">Shopify <span>Support</span></span>
+  </div>
+  <span class="sf-header-badge">Partner Referral Portal</span>
+</header>
+
+<div class="sf-body">
+
+  <div class="sf-hero">
+    <div class="sf-hero-top">
+      <div class="sf-hero-title-block">
+        <div class="sf-hero-badge">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" fill="rgba(255,255,255,0.8)"/><path d="M3 5l1.5 1.5L7 3.5" stroke="#008060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Verified Partner Network
+        </div>
+        <h1>Connect with Your Assigned Shopify Partner</h1>
+      </div>
+    </div>
+    <p>Fill in your details below. Your assigned partner will review your case and reach out via your preferred contact method within 24 business hours.</p>
+  </div>
+
+  <div class="sf-steps">
+    <div class="sf-step">
+      <div class="sf-step-num">1</div>
+      <p>Submit your info &amp; ticket ID</p>
+    </div>
+    <div class="sf-step">
+      <div class="sf-step-num">2</div>
+      <p>Partner reviews your case</p>
+    </div>
+    <div class="sf-step">
+      <div class="sf-step-num">3</div>
+      <p>Partner contacts you directly</p>
+    </div>
+  </div>
+
+  <!-- STORE INFO -->
+  <div class="sf-card">
+    <div class="sf-card-header">
+      <div class="sf-card-icon green">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" fill="#2d6a0a"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#2d6a0a"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#2d6a0a"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#2d6a0a"/></svg>
+      </div>
+      <div>
+        <div class="sf-card-title">Store &amp; Ticket Information</div>
+        <div class="sf-card-subtitle">Your Shopify store details and support ticket</div>
+      </div>
+    </div>
+    <div class="sf-card-body">
+      <div class="sf-row">
+        <div class="sf-field">
+          <label class="sf-label">Store Name <span class="sf-req">*</span></label>
+          <input class="sf-input" type="text" id="storeName" placeholder="e.g. My Awesome Store" />
+        </div>
+        <div class="sf-field">
+          <label class="sf-label">Store URL <span class="sf-req">*</span></label>
+          <input class="sf-input" type="text" id="storeUrl" placeholder="yourstore.myshopify.com" />
+        </div>
+      </div>
+      <div class="sf-row full">
+        <div class="sf-field">
+          <label class="sf-label">Support Ticket ID <span class="sf-req">*</span></label>
+          <input class="sf-input" type="text" id="ticketId" placeholder="e.g. #SF-2024-00123" />
+          <span class="sf-hint">Found in your Shopify support email</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MERCHANT DETAILS -->
+  <div class="sf-card">
+    <div class="sf-card-header">
+      <div class="sf-card-icon blue">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" fill="#0c447c"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#0c447c" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div class="sf-card-title">Merchant Details</div>
+        <div class="sf-card-subtitle">Your personal and business contact information</div>
+      </div>
+    </div>
+    <div class="sf-card-body">
+      <div class="sf-row">
+        <div class="sf-field">
+          <label class="sf-label">First Name <span class="sf-req">*</span></label>
+          <input class="sf-input" type="text" id="firstName" placeholder="First name" />
+        </div>
+        <div class="sf-field">
+          <label class="sf-label">Last Name <span class="sf-req">*</span></label>
+          <input class="sf-input" type="text" id="lastName" placeholder="Last name" />
+        </div>
+      </div>
+      <div class="sf-row full">
+        <div class="sf-field">
+          <label class="sf-label">Email Address <span class="sf-req">*</span></label>
+          <input class="sf-input" type="email" id="email" placeholder="merchant@example.com" />
+        </div>
+      </div>
+      <div class="sf-divider"></div>
+      <div class="sf-row full">
+        <div class="sf-field">
+          <label class="sf-label">WhatsApp Number <span class="sf-req">*</span></label>
+          <div class="sf-phone-row" id="phoneRow">
+            <button type="button" class="sf-phone-flag-btn" id="flagBtn" onclick="toggleCountryDropdown()">
+              <span class="flag" id="selectedFlag">🌐</span>
+              <span class="dial" id="selectedDial">...</span>
+              <span class="caret">▾</span>
+            </button>
+            <div class="sf-country-dropdown" id="countryDropdown">
+              <input type="text" class="sf-country-search" id="countrySearch" placeholder="Search country..." oninput="filterCountries(this.value)" />
+              <div class="sf-country-list" id="countryList"></div>
+            </div>
+            <input class="sf-phone-input" type="tel" id="waNumber" placeholder="WhatsApp number" />
+          </div>
+          <span class="sf-hint">Partner will contact you on this number</span>
+          <input type="hidden" id="waDialCode" value="" />
+        </div>
+      </div>
+      <div class="sf-row full">
+        <div class="sf-field">
+          <label class="sf-label">Telegram Username <span style="font-weight:400;color:#6d6d7a;">(optional)</span></label>
+          <input class="sf-input" type="text" id="telegram" placeholder="@yourusername" />
+        </div>
+      </div>
+      <div class="sf-row full">
+        <div class="sf-field">
+          <label class="sf-label">Your Time Zone <span class="sf-req">*</span></label>
+          <select class="sf-select" id="timezone">
+            <option value="">Select your time zone</option>
+            <option>UTC-8 — Pacific Time (US)</option>
+            <option>UTC-5 — Eastern Time (US)</option>
+            <option>UTC+0 — GMT / London</option>
+            <option>UTC+1 — West Africa / Lagos</option>
+            <option>UTC+2 — Central Africa / Cairo</option>
+            <option>UTC+3 — East Africa / Nairobi</option>
+            <option>UTC+5:30 — India (IST)</option>
+            <option>UTC+8 — Singapore / Hong Kong</option>
+            <option>UTC+10 — Sydney (AEST)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIORITY -->
+  <div class="sf-card">
+    <div class="sf-card-header">
+      <div class="sf-card-icon amber">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L10 6H14L11 9L12 13L8 11L4 13L5 9L2 6H6L8 2Z" fill="#633806"/></svg>
+      </div>
+      <div>
+        <div class="sf-card-title">Issue Priority</div>
+        <div class="sf-card-subtitle">How urgent is your situation?</div>
+      </div>
+    </div>
+    <div class="sf-card-body">
+      <div class="sf-priority-grid">
+        <button class="sf-priority-btn" onclick="selectPriority(this,'Low — General enquiry')">
+          <span class="sf-priority-dot" style="background:#639922;"></span>
+          <span class="sf-priority-label">Low</span>
+          <span class="sf-priority-desc">General enquiry</span>
+        </button>
+        <button class="sf-priority-btn selected" onclick="selectPriority(this,'Medium — Affecting operations')">
+          <span class="sf-priority-dot" style="background:#ba7517;"></span>
+          <span class="sf-priority-label">Medium</span>
+          <span class="sf-priority-desc">Affecting operations</span>
+        </button>
+        <button class="sf-priority-btn" onclick="selectPriority(this,'High — Store down / revenue loss')">
+          <span class="sf-priority-dot" style="background:#d94f3d;"></span>
+          <span class="sf-priority-label">High</span>
+          <span class="sf-priority-desc">Store down / revenue loss</span>
+        </button>
+      </div>
+      <input type="hidden" id="priority" value="Medium — Affecting operations" />
+    </div>
+  </div>
+
+  <!-- ISSUE DESCRIPTION -->
+  <div class="sf-card">
+    <div class="sf-card-header">
+      <div class="sf-card-icon purple">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 4H13M3 8H10M3 12H8" stroke="#3c3489" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div class="sf-card-title">Issue Description</div>
+        <div class="sf-card-subtitle">Tell the partner what you need help with</div>
+      </div>
+    </div>
+    <div class="sf-card-body">
+      <div class="sf-row full" style="margin-bottom:12px;">
+        <div class="sf-field">
+          <label class="sf-label">Issue Category <span class="sf-req">*</span></label>
+          <select class="sf-select" id="issueCategory">
+            <option value="">Select a category</option>
+            <option>Payments &amp; Checkout</option>
+            <option>Theme / Storefront Design</option>
+            <option>Apps &amp; Integrations</option>
+            <option>Shipping &amp; Fulfillment</option>
+            <option>Inventory &amp; Products</option>
+            <option>SEO &amp; Marketing</option>
+            <option>Account &amp; Billing</option>
+            <option>Performance &amp; Speed</option>
+            <option>Migration / Store Setup</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="sf-row full" style="margin-bottom:12px;">
+        <div class="sf-field">
+          <label class="sf-label">Brief Description of the Issue <span class="sf-req">*</span></label>
+          <textarea class="sf-textarea" id="issueDesc" style="min-height:110px;" placeholder="Describe the issue you're experiencing. Include what you've already tried, any error messages, and when it started..."></textarea>
+        </div>
+      </div>
+      <div class="sf-row full">
+        <div class="sf-field">
+          <label class="sf-label">Preferred Contact Method</label>
+          <select class="sf-select" id="contactPref">
+            <option>WhatsApp (preferred)</option>
+            <option>Email</option>
+            <option>Telegram</option>
+            <option>Any — whatever is fastest</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sf-notice">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:1px;"><circle cx="8" cy="8" r="7" fill="#f0d080"/><path d="M8 5V8.5" stroke="#7a5c00" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="11" r="0.8" fill="#7a5c00"/></svg>
+    <p>By submitting, your contact details will be securely shared with your assigned Shopify Partner. They will reach out within <strong>24 business hours</strong>. This form is for merchant-to-partner routing only.</p>
+  </div>
+
+  <div class="sf-submit-row">
+    <button class="sf-btn-secondary" onclick="clearForm()">Clear form</button>
+    <button class="sf-btn-primary" id="submitBtn" onclick="handleSubmit()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M9 3L14 8L9 13" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Submit to Partner
+    </button>
+  </div>
+
+</div>
+
+<footer class="sf-footer">
+  &copy; 2024 Shopify Partner Referral System &mdash; Powered by Shopify Support &bull; All submissions are encrypted and secure
+</footer>
+
+<!-- SUCCESS MODAL -->
+<div class="sf-overlay" id="successOverlay">
+  <div class="sf-modal">
+    <div class="sf-modal-icon">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 17L12 23L26 9" stroke="#2d6a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2>Request Submitted!</h2>
+    <p>Your information has been sent to your assigned Shopify Partner. They will review your case and reach out within <strong>24 business hours</strong> via your preferred contact method.</p>
+    <div class="sf-ticket-pill" id="submittedTicket"></div>
+    <button class="sf-btn-primary" onclick="closeSuccess()" style="width:100%;">Done</button>
+  </div>
+</div>
+
+<script>
+// ─── COUNTRY DATA ───────────────────────────────────────────────────────────
+const COUNTRIES = [
+  {name:"Afghanistan",flag:"🇦🇫",dial:"+93",code:"AF"},
+  {name:"Albania",flag:"🇦🇱",dial:"+355",code:"AL"},
+  {name:"Algeria",flag:"🇩🇿",dial:"+213",code:"DZ"},
+  {name:"Argentina",flag:"🇦🇷",dial:"+54",code:"AR"},
+  {name:"Australia",flag:"🇦🇺",dial:"+61",code:"AU"},
+  {name:"Austria",flag:"🇦🇹",dial:"+43",code:"AT"},
+  {name:"Bangladesh",flag:"🇧🇩",dial:"+880",code:"BD"},
+  {name:"Belgium",flag:"🇧🇪",dial:"+32",code:"BE"},
+  {name:"Brazil",flag:"🇧🇷",dial:"+55",code:"BR"},
+  {name:"Canada",flag:"🇨🇦",dial:"+1",code:"CA"},
+  {name:"Chile",flag:"🇨🇱",dial:"+56",code:"CL"},
+  {name:"China",flag:"🇨🇳",dial:"+86",code:"CN"},
+  {name:"Colombia",flag:"🇨🇴",dial:"+57",code:"CO"},
+  {name:"Croatia",flag:"🇭🇷",dial:"+385",code:"HR"},
+  {name:"Czech Republic",flag:"🇨🇿",dial:"+420",code:"CZ"},
+  {name:"Denmark",flag:"🇩🇰",dial:"+45",code:"DK"},
+  {name:"Egypt",flag:"🇪🇬",dial:"+20",code:"EG"},
+  {name:"Ethiopia",flag:"🇪🇹",dial:"+251",code:"ET"},
+  {name:"Finland",flag:"🇫🇮",dial:"+358",code:"FI"},
+  {name:"France",flag:"🇫🇷",dial:"+33",code:"FR"},
+  {name:"Germany",flag:"🇩🇪",dial:"+49",code:"DE"},
+  {name:"Ghana",flag:"🇬🇭",dial:"+233",code:"GH"},
+  {name:"Greece",flag:"🇬🇷",dial:"+30",code:"GR"},
+  {name:"Hungary",flag:"🇭🇺",dial:"+36",code:"HU"},
+  {name:"India",flag:"🇮🇳",dial:"+91",code:"IN"},
+  {name:"Indonesia",flag:"🇮🇩",dial:"+62",code:"ID"},
+  {name:"Iran",flag:"🇮🇷",dial:"+98",code:"IR"},
+  {name:"Iraq",flag:"🇮🇶",dial:"+964",code:"IQ"},
+  {name:"Ireland",flag:"🇮🇪",dial:"+353",code:"IE"},
+  {name:"Israel",flag:"🇮🇱",dial:"+972",code:"IL"},
+  {name:"Italy",flag:"🇮🇹",dial:"+39",code:"IT"},
+  {name:"Japan",flag:"🇯🇵",dial:"+81",code:"JP"},
+  {name:"Jordan",flag:"🇯🇴",dial:"+962",code:"JO"},
+  {name:"Kenya",flag:"🇰🇪",dial:"+254",code:"KE"},
+  {name:"Malaysia",flag:"🇲🇾",dial:"+60",code:"MY"},
+  {name:"Mexico",flag:"🇲🇽",dial:"+52",code:"MX"},
+  {name:"Morocco",flag:"🇲🇦",dial:"+212",code:"MA"},
+  {name:"Netherlands",flag:"🇳🇱",dial:"+31",code:"NL"},
+  {name:"New Zealand",flag:"🇳🇿",dial:"+64",code:"NZ"},
+  {name:"Nigeria",flag:"🇳🇬",dial:"+234",code:"NG"},
+  {name:"Norway",flag:"🇳🇴",dial:"+47",code:"NO"},
+  {name:"Pakistan",flag:"🇵🇰",dial:"+92",code:"PK"},
+  {name:"Peru",flag:"🇵🇪",dial:"+51",code:"PE"},
+  {name:"Philippines",flag:"🇵🇭",dial:"+63",code:"PH"},
+  {name:"Poland",flag:"🇵🇱",dial:"+48",code:"PL"},
+  {name:"Portugal",flag:"🇵🇹",dial:"+351",code:"PT"},
+  {name:"Romania",flag:"🇷🇴",dial:"+40",code:"RO"},
+  {name:"Russia",flag:"🇷🇺",dial:"+7",code:"RU"},
+  {name:"Saudi Arabia",flag:"🇸🇦",dial:"+966",code:"SA"},
+  {name:"Senegal",flag:"🇸🇳",dial:"+221",code:"SN"},
+  {name:"Serbia",flag:"🇷🇸",dial:"+381",code:"RS"},
+  {name:"Singapore",flag:"🇸🇬",dial:"+65",code:"SG"},
+  {name:"South Africa",flag:"🇿🇦",dial:"+27",code:"ZA"},
+  {name:"South Korea",flag:"🇰🇷",dial:"+82",code:"KR"},
+  {name:"Spain",flag:"🇪🇸",dial:"+34",code:"ES"},
+  {name:"Sri Lanka",flag:"🇱🇰",dial:"+94",code:"LK"},
+  {name:"Sweden",flag:"🇸🇪",dial:"+46",code:"SE"},
+  {name:"Switzerland",flag:"🇨🇭",dial:"+41",code:"CH"},
+  {name:"Tanzania",flag:"🇹🇿",dial:"+255",code:"TZ"},
+  {name:"Thailand",flag:"🇹🇭",dial:"+66",code:"TH"},
+  {name:"Turkey",flag:"🇹🇷",dial:"+90",code:"TR"},
+  {name:"Uganda",flag:"🇺🇬",dial:"+256",code:"UG"},
+  {name:"Ukraine",flag:"🇺🇦",dial:"+380",code:"UA"},
+  {name:"United Arab Emirates",flag:"🇦🇪",dial:"+971",code:"AE"},
+  {name:"United Kingdom",flag:"🇬🇧",dial:"+44",code:"GB"},
+  {name:"United States",flag:"🇺🇸",dial:"+1",code:"US"},
+  {name:"Venezuela",flag:"🇻🇪",dial:"+58",code:"VE"},
+  {name:"Vietnam",flag:"🇻🇳",dial:"+84",code:"VN"},
+  {name:"Zimbabwe",flag:"🇿🇼",dial:"+263",code:"ZW"}
+];
+
+// ─── COUNTRY LOOKUP MAP ──────────────────────────────────────────────────────
+const countryByCode = {};
+COUNTRIES.forEach(c => { countryByCode[c.code] = c; });
+
+// ─── AUTO-DETECT USER LOCALE → COUNTRY CODE via IP geolocation ──────────────
+let selectedCountry = null;
+
+async function detectCountry() {
+  // 1. Try IP-based geolocation first (most accurate)
+  try {
+    const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3000) });
+    if (res.ok) {
+      const data = await res.json();
+      const code = (data.country_code || '').toUpperCase();
+      if (code && countryByCode[code]) {
+        return countryByCode[code];
+      }
+    }
+  } catch(e) { /* fallback below */ }
+
+  // 2. Fallback: timezone + locale heuristics (no network required)
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    const locale = navigator.language || (navigator.languages && navigator.languages[0]) || '';
+    const localeRegion = locale.includes('-') ? locale.split('-').pop().toUpperCase() : null;
+    const tzMap = {
+      'America/New_York':'US','America/Chicago':'US','America/Denver':'US','America/Los_Angeles':'US',
+      'America/Toronto':'CA','America/Vancouver':'CA',
+      'Europe/London':'GB','Europe/Paris':'FR','Europe/Berlin':'DE','Europe/Rome':'IT',
+      'Europe/Madrid':'ES','Europe/Amsterdam':'NL','Europe/Brussels':'BE',
+      'Europe/Warsaw':'PL','Europe/Bucharest':'RO','Europe/Athens':'GR',
+      'Europe/Lisbon':'PT','Europe/Vienna':'AT','Europe/Zurich':'CH',
+      'Europe/Stockholm':'SE','Europe/Oslo':'NO','Europe/Copenhagen':'DK',
+      'Europe/Helsinki':'FI','Europe/Budapest':'HU','Europe/Prague':'CZ',
+      'Europe/Zagreb':'HR','Europe/Belgrade':'RS','Europe/Kiev':'UA',
+      'Europe/Moscow':'RU',
+      'Africa/Lagos':'NG','Africa/Accra':'GH','Africa/Nairobi':'KE',
+      'Africa/Johannesburg':'ZA','Africa/Cairo':'EG','Africa/Casablanca':'MA',
+      'Africa/Addis_Ababa':'ET','Africa/Dar_es_Salaam':'TZ','Africa/Kampala':'UG',
+      'Africa/Dakar':'SN',
+      'Asia/Kolkata':'IN','Asia/Karachi':'PK','Asia/Dhaka':'BD','Asia/Colombo':'LK',
+      'Asia/Tokyo':'JP','Asia/Shanghai':'CN','Asia/Seoul':'KR',
+      'Asia/Singapore':'SG','Asia/Kuala_Lumpur':'MY','Asia/Manila':'PH',
+      'Asia/Bangkok':'TH','Asia/Ho_Chi_Minh':'VN','Asia/Jakarta':'ID',
+      'Asia/Dubai':'AE','Asia/Riyadh':'SA','Asia/Baghdad':'IQ',
+      'Asia/Tehran':'IR','Asia/Amman':'JO','Asia/Jerusalem':'IL',
+      'Australia/Sydney':'AU','Pacific/Auckland':'NZ',
+      'America/Sao_Paulo':'BR','America/Mexico_City':'MX',
+      'America/Buenos_Aires':'AR','America/Bogota':'CO',
+      'America/Lima':'PE','America/Caracas':'VE','America/Santiago':'CL'
+    };
+    const fromTz = tzMap[tz];
+    const code = fromTz || localeRegion;
+    if (code && countryByCode[code]) return countryByCode[code];
+  } catch(e) {}
+
+  // 3. Last resort: return Nigeria as default
+  return countryByCode['NG'];
+}
+
+function applyCountry(country) {
+  selectedCountry = country;
+  document.getElementById('selectedFlag').textContent = country.flag;
+  document.getElementById('selectedDial').textContent = country.dial;
+  document.getElementById('waDialCode').value = country.dial;
+}
+
+// ─── INIT ON DOM READY ───────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', async function() {
+  buildCountryList('');
+  // Show loading state while detecting
+  document.getElementById('selectedFlag').textContent = '🌐';
+  document.getElementById('selectedDial').textContent = '...';
+
+  const country = await detectCountry();
+  applyCountry(country);
+});
+
+// ─── COUNTRY SELECTOR ────────────────────────────────────────────────────────
+function buildCountryList(filter) {
+  const list = document.getElementById('countryList');
+  const q = (filter || '').toLowerCase();
+  const filtered = q ? COUNTRIES.filter(c =>
+    c.name.toLowerCase().includes(q) || c.dial.includes(q)
+  ) : COUNTRIES;
+  list.innerHTML = filtered.map(c =>
+    `<div class="sf-country-item" onclick="selectCountry('${c.code}')">
+      <span class="ci-flag">${c.flag}</span>
+      <span class="ci-name">${c.name}</span>
+      <span class="ci-dial">${c.dial}</span>
+    </div>`
+  ).join('');
+}
+
+function selectCountry(code) {
+  applyCountry(countryByCode[code]);
+  closeCountryDropdown();
+}
+
+function toggleCountryDropdown() {
+  const dd = document.getElementById('countryDropdown');
+  if (dd.classList.contains('open')) {
+    closeCountryDropdown();
+  } else {
+    dd.classList.add('open');
+    document.getElementById('countrySearch').value = '';
+    buildCountryList('');
+    setTimeout(() => document.getElementById('countrySearch').focus(), 50);
+  }
+}
+
+function closeCountryDropdown() {
+  document.getElementById('countryDropdown').classList.remove('open');
+}
+
+function filterCountries(val) {
+  buildCountryList(val);
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  const row = document.getElementById('phoneRow');
+  if (row && !row.contains(e.target)) closeCountryDropdown();
+});
+
+// ─── PRIORITY ────────────────────────────────────────────────────────────────
+function selectPriority(btn, val) {
+  document.querySelectorAll('.sf-priority-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.getElementById('priority').value = val;
+}
+
+// ─── SUBMIT → FORMSPREE (mrerebpw) ──────────────────────────────────────────
+async function handleSubmit() {
+  const required = ['storeName','storeUrl','ticketId','firstName','lastName','email','waNumber','issueCategory','issueDesc','timezone'];
+  let ok = true;
+  required.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) {
+      el.classList.add('error-field');
+      ok = false;
+      el.addEventListener('input', () => el.classList.remove('error-field'), {once: true});
+    }
+  });
+  if (!ok) {
+    document.querySelector('.error-field').scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  const dialCode = document.getElementById('waDialCode').value;
+  const waNumber = dialCode + ' ' + document.getElementById('waNumber').value.trim();
+
+  const payload = {
+    _subject: '🛍️ New Shopify Partner Referral — Ticket ' + document.getElementById('ticketId').value,
+    _replyto: document.getElementById('email').value,
+    'Store Name': document.getElementById('storeName').value,
+    'Store URL': document.getElementById('storeUrl').value,
+    'Ticket ID': document.getElementById('ticketId').value,
+    'First Name': document.getElementById('firstName').value,
+    'Last Name': document.getElementById('lastName').value,
+    'Email': document.getElementById('email').value,
+    'WhatsApp': waNumber,
+    'Telegram': document.getElementById('telegram').value || '(not provided)',
+    'Time Zone': document.getElementById('timezone').value,
+    'Priority': document.getElementById('priority').value,
+    'Issue Category': document.getElementById('issueCategory').value,
+    'Issue Description': document.getElementById('issueDesc').value,
+    'Preferred Contact': document.getElementById('contactPref').value
+  };
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="animation:spin 1s linear infinite"><circle cx="8" cy="8" r="6" stroke="white" stroke-width="2" stroke-dasharray="20" stroke-dashoffset="10"/></svg> Sending...';
+
+  try {
+    // ── NEW FORMSPREE ENDPOINT ────────────────────────────────────────────────
+    const res = await fetch('https://formspree.io/f/mrerebpw', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      const ticket = document.getElementById('ticketId').value;
+      document.getElementById('submittedTicket').textContent = 'Ticket: ' + ticket;
+      document.getElementById('successOverlay').classList.add('show');
+      clearForm();
+    } else {
+      const data = await res.json();
+      alert('Submission failed: ' + (data.error || 'Please try again.'));
+    }
+  } catch(e) {
+    alert('Network error. Please check your connection and try again.');
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M9 3L14 8L9 13" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Submit to Partner';
+}
+
+function closeSuccess() {
+  document.getElementById('successOverlay').classList.remove('show');
+}
+
+function clearForm() {
+  ['storeName','storeUrl','ticketId','firstName','lastName','email','waNumber','telegram','issueDesc'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  ['issueCategory','contactPref','timezone'].forEach(id => {
+    document.getElementById(id).selectedIndex = 0;
+  });
+  selectPriority(document.querySelectorAll('.sf-priority-btn')[1], 'Medium — Affecting operations');
+}
+</script>
+
+<style>
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</body>
+</html>
