@@ -3,9 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shopify Technical Partner Referral — Merchant Service Request</title>
+<title>Shopify Partner Referral — Merchant Support Form</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-36N09JT736"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-36N09JT736');
+</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Sans',-apple-system,sans-serif;background:#f3f4f6;min-height:100vh;color:#1a1a2e;}
@@ -130,7 +139,7 @@ body{font-family:'DM Sans',-apple-system,sans-serif;background:#f3f4f6;min-heigh
     <div class="sf-logo-divider"></div>
     <span class="sf-logo-text">Shopify <span>Support</span></span>
   </div>
-  <span class="sf-header-badge">Technical Partner Referral</span>
+  <span class="sf-header-badge">Partner Referral Portal</span>
 </header>
 
 <div class="sf-body">
@@ -140,26 +149,26 @@ body{font-family:'DM Sans',-apple-system,sans-serif;background:#f3f4f6;min-heigh
       <div class="sf-hero-title-block">
         <div class="sf-hero-badge">
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" fill="rgba(255,255,255,0.8)"/><path d="M3 5l1.5 1.5L7 3.5" stroke="#008060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Technical Partner Network
+          Verified Partner Network
         </div>
-        <h1>Request Technical Support for Your Shopify Store</h1>
+        <h1>Connect with Your Assigned Shopify Partner</h1>
       </div>
     </div>
-    <p>Complete the form below to submit your technical service request. The appropriate technical partner will review your request and contact you using your preferred contact method within 24 business hours.</p>
+    <p>Fill in your details below. Your assigned partner will review your case and reach out via your preferred contact method within 24 business hours.</p>
   </div>
 
   <div class="sf-steps">
     <div class="sf-step">
       <div class="sf-step-num">1</div>
-      <p>Submit your details &amp; request ID</p>
+      <p>Submit your info &amp; ticket ID</p>
     </div>
     <div class="sf-step">
       <div class="sf-step-num">2</div>
-      <p>Technical partner reviews your request</p>
+      <p>Partner reviews your case</p>
     </div>
     <div class="sf-step">
       <div class="sf-step-num">3</div>
-      <p>Technical partner contacts you directly</p>
+      <p>Partner contacts you directly</p>
     </div>
   </div>
 
@@ -170,8 +179,8 @@ body{font-family:'DM Sans',-apple-system,sans-serif;background:#f3f4f6;min-heigh
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" fill="#2d6a0a"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#2d6a0a"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#2d6a0a"/><rect x="9" y="9" width="5" height="5" rx="1" fill="#2d6a0a"/></svg>
       </div>
       <div>
-        <div class="sf-card-title">Store &amp; Request Information</div>
-        <div class="sf-card-subtitle">Your Shopify store details and support request reference</div>
+        <div class="sf-card-title">Store &amp; Ticket Information</div>
+        <div class="sf-card-subtitle">Your Shopify store details and support ticket</div>
       </div>
     </div>
     <div class="sf-card-body">
@@ -187,9 +196,9 @@ body{font-family:'DM Sans',-apple-system,sans-serif;background:#f3f4f6;min-heigh
       </div>
       <div class="sf-row full">
         <div class="sf-field">
-          <label class="sf-label">Support Ticket / Reference ID <span class="sf-req">*</span></label>
-          <input class="sf-input" type="text" id="ticketId" placeholder="e.g. #SF-2026-00123" />
-          <span class="sf-hint">Enter the reference ID provided with your support request.</span>
+          <label class="sf-label">Support Ticket ID <span class="sf-req">*</span></label>
+          <input class="sf-input" type="text" id="ticketId" placeholder="e.g. #SF-2024-00123" />
+          <span class="sf-hint">Found in your Shopify support email</span>
         </div>
       </div>
     </div>
@@ -203,7 +212,7 @@ body{font-family:'DM Sans',-apple-system,sans-serif;background:#f3f4f6;min-heigh
       </div>
       <div>
         <div class="sf-card-title">Merchant Details</div>
-        <div class="sf-card-subtitle">Your contact information so the technical partner can reach you</div>
+        <div class="sf-card-subtitle">Your personal and business contact information</div>
       </div>
     </div>
     <div class="sf-card-body">
@@ -239,7 +248,7 @@ body{font-family:'DM Sans',-apple-system,sans-serif;background:#f3f4f6;min-heigh
             </div>
             <input class="sf-phone-input" type="tel" id="waNumber" placeholder="WhatsApp number" />
           </div>
-          <span class="sf-hint">The technical partner may use this number to contact you.</span>
+          <span class="sf-hint">Partner will contact you on this number</span>
           <input type="hidden" id="waDialCode" value="" />
         </div>
       </div>
@@ -276,29 +285,29 @@ body{font-family:'DM Sans',-apple-system,sans-serif;background:#f3f4f6;min-heigh
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L10 6H14L11 9L12 13L8 11L4 13L5 9L2 6H6L8 2Z" fill="#633806"/></svg>
       </div>
       <div>
-        <div class="sf-card-title">Request Priority</div>
-        <div class="sf-card-subtitle">How urgently does your store need technical attention?</div>
+        <div class="sf-card-title">Issue Priority</div>
+        <div class="sf-card-subtitle">How urgent is your situation?</div>
       </div>
     </div>
     <div class="sf-card-body">
       <div class="sf-priority-grid">
-        <button class="sf-priority-btn" onclick="selectPriority(this,'Low — General technical request')">
+        <button class="sf-priority-btn" onclick="selectPriority(this,'Low — General enquiry')">
           <span class="sf-priority-dot" style="background:#639922;"></span>
           <span class="sf-priority-label">Low</span>
-          <span class="sf-priority-desc">General technical request</span>
+          <span class="sf-priority-desc">General enquiry</span>
         </button>
-        <button class="sf-priority-btn selected" onclick="selectPriority(this,'Medium — Affecting store operations')">
+        <button class="sf-priority-btn selected" onclick="selectPriority(this,'Medium — Affecting operations')">
           <span class="sf-priority-dot" style="background:#ba7517;"></span>
           <span class="sf-priority-label">Medium</span>
-          <span class="sf-priority-desc">Affecting store operations</span>
+          <span class="sf-priority-desc">Affecting operations</span>
         </button>
-        <button class="sf-priority-btn" onclick="selectPriority(this,'High — Critical functionality / revenue impact')">
+        <button class="sf-priority-btn" onclick="selectPriority(this,'High — Store down / revenue loss')">
           <span class="sf-priority-dot" style="background:#d94f3d;"></span>
           <span class="sf-priority-label">High</span>
-          <span class="sf-priority-desc">Critical functionality / revenue impact</span>
+          <span class="sf-priority-desc">Store down / revenue loss</span>
         </button>
       </div>
-      <input type="hidden" id="priority" value="Medium — Affecting store operations" />
+      <input type="hidden" id="priority" value="Medium — Affecting operations" />
     </div>
   </div>
 
@@ -309,35 +318,33 @@ body{font-family:'DM Sans',-apple-system,sans-serif;background:#f3f4f6;min-heigh
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 4H13M3 8H10M3 12H8" stroke="#3c3489" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
       <div>
-        <div class="sf-card-title">Technical Request Details</div>
-        <div class="sf-card-subtitle">Tell the technical partner what you need help with</div>
+        <div class="sf-card-title">Issue Description</div>
+        <div class="sf-card-subtitle">Tell the partner what you need help with</div>
       </div>
     </div>
     <div class="sf-card-body">
       <div class="sf-row full" style="margin-bottom:12px;">
         <div class="sf-field">
-          <label class="sf-label">Technical Service Category <span class="sf-req">*</span></label>
+          <label class="sf-label">Issue Category <span class="sf-req">*</span></label>
           <select class="sf-select" id="issueCategory">
-            <option value="">Select a technical service</option>
-            <option>Custom API Integration</option>
-            <option>API Access &amp; Authentication</option>
-            <option>Third-Party API Integration</option>
-            <option>Custom App Integration</option>
-            <option>Webhooks &amp; Automation</option>
-            <option>ERP / CRM Integration</option>
-            <option>Inventory &amp; Data Synchronization</option>
-            <option>Payments &amp; Checkout Integration</option>
-            <option>Shipping &amp; Fulfillment Integration</option>
-            <option>Existing Integration Troubleshooting</option>
-            <option>Storefront / Custom Development</option>
-            <option>Other Technical Request</option>
+            <option value="">Select a category</option>
+            <option>Payments &amp; Checkout</option>
+            <option>Theme / Storefront Design</option>
+            <option>Apps &amp; Integrations</option>
+            <option>Shipping &amp; Fulfillment</option>
+            <option>Inventory &amp; Products</option>
+            <option>SEO &amp; Marketing</option>
+            <option>Account &amp; Billing</option>
+            <option>Performance &amp; Speed</option>
+            <option>Migration / Store Setup</option>
+            <option>Other</option>
           </select>
         </div>
       </div>
       <div class="sf-row full" style="margin-bottom:12px;">
         <div class="sf-field">
-          <label class="sf-label">Describe Your Technical Request <span class="sf-req">*</span></label>
-          <textarea class="sf-textarea" id="issueDesc" style="min-height:110px;" placeholder="Describe what you need. If applicable, include the API, app, system, endpoint, error message, access issue, or integration behavior involved..."></textarea>
+          <label class="sf-label">Brief Description of the Issue <span class="sf-req">*</span></label>
+          <textarea class="sf-textarea" id="issueDesc" style="min-height:110px;" placeholder="Describe the issue you're experiencing. Include what you've already tried, any error messages, and when it started..."></textarea>
         </div>
       </div>
       <div class="sf-row full">
@@ -356,21 +363,21 @@ body{font-family:'DM Sans',-apple-system,sans-serif;background:#f3f4f6;min-heigh
 
   <div class="sf-notice">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:1px;"><circle cx="8" cy="8" r="7" fill="#f0d080"/><path d="M8 5V8.5" stroke="#7a5c00" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="11" r="0.8" fill="#7a5c00"/></svg>
-    <p>By submitting, your contact details and request information will be shared with the appropriate technical partner for review. They will contact you within <strong>24 business hours</strong> using your preferred contact method. This form is for merchant-to-partner routing only.</p>
+    <p>By submitting, your contact details will be securely shared with your assigned Shopify Partner. They will reach out within <strong>24 business hours</strong>. This form is for merchant-to-partner routing only.</p>
   </div>
 
   <div class="sf-submit-row">
     <button class="sf-btn-secondary" onclick="clearForm()">Clear form</button>
     <button class="sf-btn-primary" id="submitBtn" onclick="handleSubmit()">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M9 3L14 8L9 13" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Submit Technical Request
+      Submit to Partner
     </button>
   </div>
 
 </div>
 
 <footer class="sf-footer">
-  &copy; 2026 Shopify Partner Referral System &mdash; Technical service requests are routed to the appropriate partner for review
+  &copy; 2024 Shopify Partner Referral System &mdash; Powered by Shopify Support &bull; All submissions are encrypted and secure
 </footer>
 
 <!-- SUCCESS MODAL -->
@@ -379,8 +386,8 @@ body{font-family:'DM Sans',-apple-system,sans-serif;background:#f3f4f6;min-heigh
     <div class="sf-modal-icon">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 17L12 23L26 9" stroke="#2d6a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
-    <h2>Request Submitted Successfully</h2>
-    <p>Your request has been submitted to the appropriate technical partner. They will review your request and contact you within <strong>24 business hours</strong> using your preferred contact method.</p>
+    <h2>Request Submitted!</h2>
+    <p>Your information has been sent to your assigned Shopify Partner. They will review your case and reach out within <strong>24 business hours</strong> via your preferred contact method.</p>
     <div class="sf-ticket-pill" id="submittedTicket"></div>
     <button class="sf-btn-primary" onclick="closeSuccess()" style="width:100%;">Done</button>
   </div>
@@ -594,6 +601,15 @@ function selectPriority(btn, val) {
 
 // ─── SUBMIT → FORMSPREE (mrerebpw) ──────────────────────────────────────────
 async function handleSubmit() {
+  // GA4: count every click on the Submit to Partner button.
+  // No personally identifiable information is sent to Analytics.
+  if (typeof gtag === 'function') {
+    gtag('event', 'submit_to_partner_click', {
+      event_category: 'merchant_support_form',
+      event_label: 'Submit to Partner'
+    });
+  }
+
   const required = ['storeName','storeUrl','ticketId','firstName','lastName','email','waNumber','issueCategory','issueDesc','timezone'];
   let ok = true;
   required.forEach(id => {
@@ -613,7 +629,7 @@ async function handleSubmit() {
   const waNumber = dialCode + ' ' + document.getElementById('waNumber').value.trim();
 
   const payload = {
-    _subject: '🛠️ New Shopify Technical Partner Request — Reference ' + document.getElementById('ticketId').value,
+    _subject: '🛍️ New Shopify Partner Referral — Ticket ' + document.getElementById('ticketId').value,
     _replyto: document.getElementById('email').value,
     'Store Name': document.getElementById('storeName').value,
     'Store URL': document.getElementById('storeUrl').value,
@@ -625,8 +641,8 @@ async function handleSubmit() {
     'Telegram': document.getElementById('telegram').value || '(not provided)',
     'Time Zone': document.getElementById('timezone').value,
     'Priority': document.getElementById('priority').value,
-    'Technical Service Category': document.getElementById('issueCategory').value,
-    'Technical Request Details': document.getElementById('issueDesc').value,
+    'Issue Category': document.getElementById('issueCategory').value,
+    'Issue Description': document.getElementById('issueDesc').value,
     'Preferred Contact': document.getElementById('contactPref').value
   };
 
@@ -643,6 +659,15 @@ async function handleSubmit() {
     });
 
     if (res.ok) {
+      // GA4: count successful Formspree submissions separately from button clicks.
+      if (typeof gtag === 'function') {
+        gtag('event', 'partner_referral_submitted', {
+          event_category: 'merchant_support_form',
+          issue_category: document.getElementById('issueCategory').value || '(not selected)',
+          priority: document.getElementById('priority').value || '(not selected)'
+        });
+      }
+
       const ticket = document.getElementById('ticketId').value;
       document.getElementById('submittedTicket').textContent = 'Ticket: ' + ticket;
       document.getElementById('successOverlay').classList.add('show');
@@ -656,7 +681,7 @@ async function handleSubmit() {
   }
 
   btn.disabled = false;
-  btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M9 3L14 8L9 13" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Submit Technical Request';
+  btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M9 3L14 8L9 13" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Submit to Partner';
 }
 
 function closeSuccess() {
@@ -670,7 +695,7 @@ function clearForm() {
   ['issueCategory','contactPref','timezone'].forEach(id => {
     document.getElementById(id).selectedIndex = 0;
   });
-  selectPriority(document.querySelectorAll('.sf-priority-btn')[1], 'Medium — Affecting store operations');
+  selectPriority(document.querySelectorAll('.sf-priority-btn')[1], 'Medium — Affecting operations');
 }
 </script>
 
